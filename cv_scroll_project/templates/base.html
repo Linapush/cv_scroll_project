@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+   
+    <title>{% block title %}Podruga iz Sochi{% endblock %}</title>
+  </head>
+  <body>
+    <div class="content">
+      <!-- header -->
+      <header id="home">
+        <!-- navbar -->
+        <nav id="nav" style="z-index: 0;">
+          <div class="nav-center">
+            <div class="nav-header">
+              <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="logo" class="logo">
+              <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+              </button>
+            </div>
+            <!-- Links -->
+            <div class="links-container">
+              <ul class="links">
+                <!-- Links go here -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {% block top_content %}{% endblock %}
+      {% block main_content %}{% endblock %}
+    </div>
+
+    <!-- footer -->
+    <footer class="section">
+      <p>
+        Copyright © Podruga iz Sochi
+        <span id="date"></span> all rights reserved :)
+        made by Timothy Labs 🧐
+      </p>
+    </footer>
+
+    <!-- кнопка наверх -->
+    <a href="#home" class="scroll-link top-link"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- javascript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slide_show.js') }}"></script>
+  </body>
+</html>

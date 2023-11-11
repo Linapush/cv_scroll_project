@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Обо мне
+{% endblock %}
+
+{% block main_content %}
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="display-4">О проекте</h1>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img src="img/excursions.jpg" class="card-img-top" alt="Индивидуальные экскурсии">
+          <div class="card-body">
+            <h5 class="card-title">Индивидуальные экскурсии</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img src="img/photos-video.jpg" class="card-img-top" alt="Фото и видеосъемка">
+          <div class="card-body">
+            <h5 class="card-title">Фото и видеосъемка</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img src="img/stories.jpg" class="card-img-top" alt="Живые истории">
+          <div class="card-body">
+            <h5 class="card-title">Живые истории</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img src="img/cuisine.jpg" class="card-img-top" alt="Вкусная кухня">
+          <div class="card-body">
+            <h5 class="card-title">Вкусная кухня</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img src="img/atmosphere.jpg" class="card-img-top" alt="Атмосфера">
+          <div class="card-body">
+            <h5 class="card-title">Атмосфера</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-center">Описание проекта</h2>
+              <p class="card-text text-center">Тут подробное описание вашего проекта.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Отзывы</h2>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Отзыв</h5>
+              <p class="card-text text-center">Текст первого отзыва.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Отзыв 2</h5>
+              <p class="card-text">Текст второго отзыва.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Отзыв 3</h5>
+              <p class="card-text">Текст третьего отзыва.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="text-center py-5">
+    <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Связаться</a>
+  </section>
+{% endblock %}
