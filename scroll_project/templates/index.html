@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Подруга из Сочи</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- styles -->
+    <!-- <link rel="stylesheet" href="../static/styles.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+    <!-- <link rel="icon" href="../static/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
+  </head>
+  <body>
+    <!-- header -->
+    <header id="home">
+      <!-- navbar -->
+      <nav id="nav">
+       <div class="nav-center">
+       <!-- nav header -->
+       <div class="nav-header">
+         <!-- <img src="../static/logo.jpg" alt="logo" class="logo"> -->
+         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="logo" class="logo">
+         <button class="nav-toggle" id="nav-toggle">
+           <i class="fas fa-bars"></i>
+         </button>
+       </div>
+       <!-- Links -->
+       <div class="links-container">
+         <ul class="links">
+          <li>
+           <a href="#home" class="scroll-link">Дом</a>
+          </li>
+          <li>
+           <a href="#about-Sochi" class="scroll-link">О Сочи</a>
+          </li>
+          <li>
+           <a href="#about-me" class="scroll-link">Обо мне</a>
+          </li>
+          <li>
+           <a href="#tours" class="scroll-link">Цены</a>
+          </li>
+          <li>
+           <a href="#photos" class="scroll-link">Галерея</a>
+          </li>
+          <li>
+           <a href="#telega" class="scroll-link">Мой Telegram канал</a>
+          </li>
+         </ul>
+       </div>
+      </div>
+     </nav>
+     <!-- banner -->
+     <div class="banner">
+       <div class="container">
+         <h1>Подруга из Сочи</h1>
+         <h3><p>Всем привет! Это Алина - ваша <br><br><span>Подруга из Сочи.</span></p></h3>
+         <a href="#photos" class="scroll-link btn btn-white">Галерея</a>
+       </div>
+     </div>
+    </header>
+    <!-- О Сочи -->
+    <br>
+    <section id="about-Sochi" class="section">
+      <div class="title">
+        <h2>О <span>Сочи</span></h2>
+        <br>
+        <h4 class="center-text">Сочи очень красивый город, рядом море, много достопримечательностей,
+        можно пойти в поход в горы, но раздражают всякие там зазывалы</h4>
+      </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about-me" class="section">
+      <div class="title">
+        <h2>Обо <span>мне</span></h2>
+        <br>
+        <h4 class="center-text">Я Алина этим все сказано хехехе</h4>
+      </div>
+    </section>
+
+    <!-- цены -->
+    <section id="tours" class="section">
+      <div class="title">
+        <h2><span>Це</span>ны</h2>
+        <br>
+        <h4 class="center-text">Н/Д - ничего)</h4>
+      </div>
+    </section>
+
+    <!-- галерея -->
+    <section id="photos" class="section">
+      <div class="title">
+        <h2><span>Гале</span>рея</h2>
+        <br>
+        <h4 class="center-text">Скоро будет (еще не было заказов, но ваше фото может стать первым здесь, тоесть вы должны заказакать услугу)</h4>
+      </div>
+    </section>
+
+    <!-- Телеграмм -->
+    <br>
+    <section id="telega" class="section">
+      <div class="title">
+        <h2>Мой <span>Telegram</span> канал</h2>
+        <br>
+        <h4 class="center-text"><a href="https://t.me/podrugaizsochi" target="_blank">Вот мой Telegram канал</a></h4>
+        <br>
+         <a href="#telega" class="scroll-link btn btn-red">Подпишись</a>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="section">
+      <p>Copyright © Podruga iz Sochi
+        <span id="date"></span> all rights reserved :)
+         made by Timothy Labs 🧐</p>
+    </footer>
+
+    <!-- кнопка наверх -->
+    <a href="#home" class="scroll-link top-link"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- javascript -->
+    <!-- <script src="../static/app.js"></script> -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script> -->
+  </body>
+</html>
+
+
+<!-- для Flask потом -->
+
+
+
+

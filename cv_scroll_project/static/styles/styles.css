@@ -371,6 +371,11 @@ header {
   /* color: rgb(20, 125, 154); */
    color: rgb(20, 125, 154);
 }
+h2.tours {
+  text-align: center;
+  font-family: var(--ff-secondary);
+  color: #fff;
+}
 .title span {
   /* color: Aquamarine; */
   color: rgb(20, 125, 154);
@@ -416,6 +421,9 @@ footer p {
 .show-link {
   visibility: visible;
   z-index: 100;
+}
+.bg {
+  z-index: 1000;
 }
 
 @keyframes bounce {

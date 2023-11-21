@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking</title>
+</head>
+<body>
+    <h1>Booking Details</h1>
+    <table>
+        <tr>
+            <th>Tour ID</th>
+            <th>Quantity</th>
+        </tr>
+        {% for tour_id, booking_info in booking.items() %}
+        <tr>
+            <td>{{ tour_id }}</td>
+            <td>{{ booking_info.qty }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

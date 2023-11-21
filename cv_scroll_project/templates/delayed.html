@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Delayed Tours</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}"/>
+ </head>
+
+ <body>
+  <div class="container-fluid breadcrumbBox text-center">
+   <ol class="breadcrumb">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li class="active"><a href="#">Delayed Tours</a></li>
+   </ol>
+  </div>
+  <div class="container text-center">
+
+   <div class="col-md-5 col-sm-12">
+    <div class="bigcart"></div>
+    <h1>Your delayed tours</h1>
+   </div>
+   
+   <div class="col-md-7 col-sm-12 text-left">
+    <ul>
+     <li class="row list-inline columnCaptions">
+      <span>Quantity</span>
+      <span>Tour</span>
+      <span>Price</span>
+     </li>
+     {% for tour_id in delayed_tours["tours"] %}
+     <li class="row">
+      <span class="quantity">{{ delayed_tours["tours"][tour_id]["qty"] }}</span>
+      <span class="itemName">{{ delayed_tours["tours"][tour_id]["tour_name"] }}</span>
+      <span class="price">$ {{ delayed_tours["tours"][tour_id]["price"] }}</span>
+      <a href="{{ url_for('remove_delayed_tour', tour_id = tour_id) }}"><span class="glyphicon glyphicon-remove"></span></a>
+     </li>
+     {% endfor %}
+     <li class="row totals">
+      <span class="itemName">Total:</span>
+      <span class="price">${{ delayed_tours["total"] }}</span>
+     </li>
+    </ul>
+   </div>
+
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+  <script src="{{ url_for('static',filename='scripts/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='scripts/customjs.js') }}"></script>
+
+ </body>
+</html>

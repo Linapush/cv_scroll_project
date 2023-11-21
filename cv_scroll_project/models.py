@@ -33,6 +33,9 @@ class Tours(db.Model):
     price = db.Column(db.Float, nullable=False)
     reservation = db.relationship('Reservation', backref='tour', uselist=False, cascade="all, delete-orphan", )
 
+    def __repr__ (self):
+        return self.name
+
 class Reservation(db.Model):
     __tablename__ = 'reservations'
     id = db.Column(db.Integer, primary_key=True)
@@ -41,3 +44,6 @@ class Reservation(db.Model):
     payment_status = db.Column(db.String(50))
     tour_id = db.Column(db.Integer, db.ForeignKey('tours.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    def __repr__ (self):
+        return str(self.id)

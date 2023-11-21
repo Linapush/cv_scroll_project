@@ -86,56 +86,56 @@ window.addEventListener('scroll', scroll)
 
 // 1 ВАРИАНТ (простой fetch-запрос)
 
-// const weatherContainer = document.getElementById("weather-container");
-// fetch('http://api.openweathermap.org/data/2.5/weather?id=491422&units=metric&appid=b9a699d1fd5917547eeea0341fed9a95')
-//   .then(response => response.json())
-//   .then(data => {
-//     const temp = data.main.temp;
-//     const weather = document.createElement("p");
-//     weather.innerText = `Сейчас в Сочи: ${temp}°C`;
-//     weatherContainer.append(weather);
-//   })
-//   .catch(error => console.log(error));
+const weatherContainer = document.getElementById("weather-container");
+fetch('http://api.openweathermap.org/data/2.5/weather?id=491422&units=metric&appid=b9a699d1fd5917547eeea0341fed9a95')
+  .then(response => response.json())
+  .then(data => {
+    const temp = data.main.temp;
+    const weather = document.createElement("p");
+    weather.innerText = `Сейчас в Сочи: ${temp}°C`;
+    weatherContainer.append(weather);
+  })
+  .catch(error => console.log(error));
 
 
-// 2 ВАРИАНТ
-// определяем конструктор, который принимает 'apiKey'
-// и сохраняет его в свойстве 'this.apiKey'
-window.addEventListener('DOMContentLoaded', function() { // ф-ция обработчик
-  class WeatherAPI {
-    constructor(apiKey) {
-      this.apiKey = apiKey;
-    }
-    // метод getWeather()
-    // исп ключевое слово async и оператор await для выполнения асинхронных операций
-    // fetch для отправки запроса и получения ответа
+// // 2 ВАРИАНТ
+// // определяем конструктор, который принимает 'apiKey'
+// // и сохраняет его в свойстве 'this.apiKey'
+// window.addEventListener('DOMContentLoaded', function() { // ф-ция обработчик
+//   class WeatherAPI {
+//     constructor(apiKey) {
+//       this.apiKey = apiKey;
+//     }
+//     // метод getWeather()
+//     // исп ключевое слово async и оператор await для выполнения асинхронных операций
+//     // fetch для отправки запроса и получения ответа
 
-    async getWeather(cityId) {
-      try {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${this.apiKey}`);
-        const data = await response.json();
-        return data.main.temp;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
+//     async getWeather(cityId) {
+//       try {
+//         const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${this.apiKey}`);
+//         const data = await response.json();
+//         return data.main.temp;
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     }
+//   }
 
-  // при получении данных о погоде, создаем элемент `<p>` и устанавливаем его содержимое с помощью свойства `innerText`
-  // созданный элемент добавляем в контейнер с помощью метода `append`
+//   // при получении данных о погоде, создаем элемент `<p>` и устанавливаем его содержимое с помощью свойства `innerText`
+//   // созданный элемент добавляем в контейнер с помощью метода `append`
   
-  const weatherContainer = document.querySelector('#weather-container');
-  const weatherAPI = new WeatherAPI('b9a699d1fd5917547eeea0341fed9a95'); // создание нового экземпляра объекта WeatherAPI с ключом API, который будет использоваться для получения данных о погоде
-  weatherAPI.getWeather(491422)
-    .then(temp => {
-      const weather = document.createElement("p");
-      weather.innerText = `Сейчас в Сочи: ${temp}°C`;
-      weatherContainer.append(weather);
-    })
-    .catch(error => console.log(error));
-});
+//   const weatherContainer = document.querySelector('#weather-container');
+//   const weatherAPI = new WeatherAPI('b9a699d1fd5917547eeea0341fed9a95'); // создание нового экземпляра объекта WeatherAPI с ключом API, который будет использоваться для получения данных о погоде
+//   weatherAPI.getWeather(491422)
+//     .then(temp => {
+//       const weather = document.createElement("p");
+//       weather.innerText = `Сейчас в Сочи: ${temp}°C`;
+//       weatherContainer.append(weather);
+//     })
+//     .catch(error => console.log(error));
+// });
 
-// На заметку
-// web storm - IDE
-//1. npm init - подклбчить бюлиотект для приведения к общему формату
-//2. npm install
+// // На заметку
+// // web storm - IDE
+// //1. npm init - подклбчить бюлиотект для приведения к общему формату
+// //2. npm install
