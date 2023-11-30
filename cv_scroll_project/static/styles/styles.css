@@ -10,6 +10,43 @@ Fonts
 Variables
 ===============
 */
+.user-status {
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: #377e89;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.signup {
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: #377e89;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.login{
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: #377e89;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+.signout {
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: #377e89;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
 .choto-vpishy {
   color: black;
   text-decoration-color: black;
@@ -165,6 +202,11 @@ p {
   }
 }
 /*  global classes */
+.button-container {
+  display: flex;
+  justify-content:baseline; /* or any other preferred value */
+  padding: 0 80px; /* add padding to create space from the edges */
+}
 
 .btn {
   text-transform: uppercase;
@@ -179,7 +221,7 @@ p {
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
-}
+  margin-top: 10px;}
 .btn:hover {
   color: var(--clr-white);
   background: var(--clr-black);

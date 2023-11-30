@@ -1,8 +1,9 @@
 import jwt
-from flask import request, abort, current_app
+from flask import request, abort, current_app, jsonify
 from models import User
 from functools import wraps
 from werkzeug.security import check_password_hash
+from flask_login import current_user
 
 def token_required(func):
     @wraps(func)
@@ -29,4 +30,14 @@ def token_required(func):
             # return abort(401)
         return func(*args, **kwargs)
     
+    return wrapper
+
+def roles_required(role):
+    def wrapper(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if not current_user.has_role(role):  
+                return jsonify({"message": "Access denied"}), 403
+            return f(*args, **kwargs)
+        return decorated_function
     return wrapper

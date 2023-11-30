@@ -17,6 +17,7 @@
     <div id="bg"></div> 
 
       <form action="/login" method="post">
+        <input type="hidden" name="next" value="{{ request.args.get('next') }}">
       <div class="form-field">
         <input type="email" name="email" placeholder="Email / Username" required="">
       </div>

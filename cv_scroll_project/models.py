@@ -4,14 +4,6 @@ db = SQLAlchemy()
 
 metadata = db.metadata
 
-# ревизия где есть юзер и ролс
-# alembic downgrade
-# юзер и ролс
-# туры и бронь
-# downgrade 
-
-
-# наследуем UserMixin (flask_login())
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -19,12 +11,18 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(300), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     role = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
+    amount = db.Column(db.Float, default=0)
+    __table_args__ = (db.UniqueConstraint('email'),)
+    reservations = db.relationship('Reservation', backref='users', lazy=True, foreign_keys='Reservation.user_id')
+
+    def has_role(self, role_name):
+        return role_name in [role.name for role in self.roles]
 
 class Roles(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    users = db.relationship('User', backref='user', lazy=True, cascade="all, delete-orphan")
+    users = db.relationship('User', backref='role_obj', lazy=True, cascade="all, delete-orphan")
 
 class Tours(db.Model):
     __tablename__ = 'tours' 
@@ -47,3 +45,4 @@ class Reservation(db.Model):
 
     def __repr__ (self):
         return str(self.id)
+    

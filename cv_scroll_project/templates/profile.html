@@ -1,9 +1,35 @@
-{% block title %}
-  Ваш личный кабинет
-{% endblock %}
-
-{% block main_content %}
-<h1>Профиль пользователя</h1>
-<p>Имя: {{ username }}</p>
-<p>Электронная почта: {{ user_email }}</p>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Ваш личный кабинет</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}"/>
+ </head>
+ <body>
+    <div class="container-fluid breadcrumbBox text-center">
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+            <li class="active"><a href="#">Ваш личный кабинет</a></li>
+            <li><a href="{{ url_for('booking') }}">Забронированные туры</a></li>
+            
+        </ol>
+    </div>
+    
+    <div class="container text-center">
+        <div class="col-md-5 col-sm-12">
+            <div class="bigcart"></div>
+            <h1>Профиль пользователя</h1>
+            <span>Имя: {{ username }}</span>
+            <p>Электронная почта: {{ current_user.email }}</p>
+            <span>Баланс: {{ current_user.amount }}</span>
+            <form action="{{ url_for('recharge') }}" method="POST">
+                <label for="amount">Введите сумму для пополнения:</label>
+                <input type="number" name="amount" step="0.01" required>
+                <button type="submit">Пополнить</button>
+            </form>
+    </div>
+</body>

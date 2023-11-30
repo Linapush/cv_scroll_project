@@ -16,6 +16,7 @@ services:
   postgres:
     image: postgres:15.1
     environment:
+      - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
@@ -27,3 +28,5 @@ services:
       retries: 30
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+      

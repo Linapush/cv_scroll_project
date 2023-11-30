@@ -3,36 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}"/>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    .album {
+      padding: 3rem 0;
+    }
+    .tours {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tour-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .tour-card {
+      width: 300px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .tour-card h3 {
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
   <title>Каталог туров</title>
 </head>
 <body>
-  <header id="catalog">
-    <br><br>
-    <h2 class="tours">Каталог туров</h2>
-    <div class="tour-cards">
-        {% for tour in tours %}
-            <div class="tour-card">
-                <h3>Название туров: {{ tour.name }}</h3>
-                <h3>Цена: {{ tour.price }} Р</h3>
-
-                <form action="/add_to_delayed/{{tour.id}}" method="post">
-                    <input type="hidden" name="tour_id" value="{{ tour.id }}">
-                    <button type="submit">Добавить в Избранное</button>
-                </form>
-
-                <form action="/add_to_booking/{{tour.id}}" method="post">
-                    <input type="hidden" name="tour_id" value="{{ tour.id }}">
-                    <button type="submit">Забронировать</button>
-                </form>
-            </div>
-            <br>
-        {% endfor %}
-    </div>
-  
-  </header>
+  <div class="container-fluid breadcrumbBox text-center">
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('index') }}">Главная</a></li>
+        <li class="active"><a href="#">Каталог</a></li>
+        <li><a href="{{ url_for('delayed') }}">Отложенные</a></li>
+        <li><a href="{{ url_for('booking') }}">Забронированные</a></li>
+    </ol>
+  </div>
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <header id="catalog">
+          <br><br>
+          <h2 class="tours">Каталог туров</h2>
+          <div class="tour-cards">
+              {% for tour in tours %}
+                  <div class="tour-card">
+                      <h3>Название фототура: {{ tour.name }}</h3>
+                      <h3>Стоимость: {{ tour.price }} Р</h3>
+                      <br>
+                      <form action="/add_to_delayed/{{tour.id}}" method="post">
+                          <input type="hidden" name="tour_id" value="{{ tour.id }}">
+                          <button type="submit">Добавить в Избранное</button>
+                      </form>
+                      <br>
+                      <form action="/add_to_booking/{{tour.id}}" method="post">
+                          <input type="hidden" name="tour_id" value="{{ tour.id }}">
+                          <button type="submit">Забронировать</button>
+                      </form>
+                  </div>
+                  <br>
+              {% endfor %}
+          </div>
+        </header>
 </body>
 </html>
 

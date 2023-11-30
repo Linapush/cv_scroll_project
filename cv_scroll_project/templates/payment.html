@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}"/>
+
+    <style>
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid breadcrumbBox text-center">
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+            <li><a href="{{ url_for('delayed') }}">Отложенные</a></li>
+            <li><a href="{{ url_for('booking') }}">Забронированные</a></li>
+            <li class="active"><a href="#">Оплата</a></li>
+            
+        </ol>
+    </div>
+<div>
+    <br>
+    <h2 class="text-center"> Оплата выбранного тура </h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>{{ form.card_number.label }} {{ form.card_number(size=20) }}</div>
+        <div>{{ form.card_holder.label }} {{ form.card_holder(size=20) }}</div>
+        <div>{{ form.expiration_date.label }} {{ form.expiration_date(size=20) }}</div>
+        <div>{{ form.cvv.label }} {{ form.cvv(size=20) }}</div>
+        <div>{{ form.amount.label }} {{ form.amount(size=20) }}</div>
+        <div>{{ form.submit() }}</div>
+    </form>
+</div>
+</body>
+</html>

@@ -2,20 +2,65 @@
 <html>
 <head>
     <title>Booking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}"/>
 </head>
 <body>
-    <h1>Booking Details</h1>
-    <table>
-        <tr>
-            <th>Tour ID</th>
-            <th>Quantity</th>
-        </tr>
-        {% for tour_id, booking_info in booking.items() %}
-        <tr>
-            <td>{{ tour_id }}</td>
-            <td>{{ booking_info.qty }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container-fluid breadcrumbBox text-center">
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('index') }}">Главная</a></li>
+            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+            <li><a href="{{ url_for('delayed') }}">Отложенные</a></li>
+            <li class="active"><a href="#">Забронированные</a></li>
+            
+        </ol>
+    </div>
+    
+    <div class="container text-center">
+        <div class="col-md-5 col-sm-12">
+            <div class="bigcart"></div>
+            <h1>
+                Booking Details</h1>
+        </div>
+        {% if "Booking" in session %}
+        <p>Booking Data: {{ booking }}</p>
+        {% else %}
+        <p>No booking session found</p>
+        {% endif %}
+        <div class="col-md-7 col-sm-12 text-left">
+            <ul>
+                <li class="row list-inline columnCaptions">
+                    <span>Дата</span>
+                    <span>Название</span>
+                    <span>Статус</span>
+                    <span>Статус оплаты</span>
+                    <span>Стоимость</span>
+                    <span>Action</span>
+                </li>
+            </ul>
+        </div>
+     {% for tour_id in booking %}
+        <li class="row">
+            <span class="date">{{ booking[tour_id]["date"] }}</span>
+            <span class="itemName">{{ booking[tour_id]["item"] }}</span>
+            <span class="status"> {{ booking[tour_id]["status"] }}</span>
+            <span class="payment_status"> {{ booking[tour_id]["payment_status"] }}</span>
+            <span class="price"> {{ booking[tour_id]["price"] }}</span>
+        </li>
+        <form action="/remove_from_booking/{{ tour_id }}" method="post">
+            <button type="submit" class="btn btn-danger">Remove</button>
+        </form>
+        <form action="/payment/{{ tour_id }}" method="post">
+            <button type="submit" class="btn btn-success">Pay now</button>
+        </form>
+    {% endfor %}
+
+    </div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script src="{{ url_for('static',filename='scripts/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='scripts/customjs.js') }}"></script>
 </body>
 </html>

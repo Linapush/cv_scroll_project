@@ -10,3 +10,5 @@ __pycache__
 alembic.ini
 data.json
 scriptfordata.py
+test_models.py
+other
