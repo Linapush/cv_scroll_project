@@ -39,7 +39,6 @@ class TestCase(TestCase):
             response = self.client.get('/booking')
             self.assertEqual(response.status_code, 200)
 
-
     def test_get_users(self):
         response = self.client.get('/api/get_users')
         self.assertEqual(response.status_code, 200)
@@ -49,7 +48,6 @@ class TestCase(TestCase):
         response = self.client.get(f'/api/get_user/{user_id}')
         self.assertEqual(response.status_code, 200)
 
-
     def test_get_roles(self):
         response = self.client.get('/api/get_roles')
         self.assertEqual(response.status_code, 200)
@@ -57,8 +55,7 @@ class TestCase(TestCase):
     def test_get_role(self):
         role_id = Roles.query.first().id
         response = self.client.get(f'/api/get_role/{role_id}')
-        self.assertEqual(response.status_code, 200)
-    
+        self.assertEqual(response.status_code, 200)    
 
     def test_get_tours(self):
         response = self.client.get('/api/get_tours')
@@ -68,6 +65,11 @@ class TestCase(TestCase):
         tour_id = Tours.query.first().id
         response = self.client.get(f'/api/get_tour/{tour_id}')
         self.assertEqual(response.status_code, 200)
+
+    def test_create_tour(self):
+        new_tour = {"name": "Test Tour", "price": 100.0}
+        response = self.client.post('/api/create_tour', json=new_tour)
+        self.assertEqual(response.status_code, 201)
 
     def test_get_reservations(self):
         response = self.client.get('/api/get_reservations')
@@ -81,6 +83,12 @@ class TestCase(TestCase):
     def test_index(self):
         response = self.client.get('/')
         response = self.client.get('/index')
+        response = self.client.get('/home')
+        self.assertEqual(response.status_code, 200)
+
+    def test_auth(self):
+        self.app.post(
+            '/login', data={'email': 'test@test.com', 'password': 'test'})
         response = self.client.get('/home')
         self.assertEqual(response.status_code, 200)
 
